@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace e_commerce.DataAccess.Repository.IRepository
+{
+    public interface IRepository <T> where T : class
+    {
+        // t category 
+        IEnumerable<T>  GetAll (string? includeProperties =null);
+        T GetFirstOrDefault (Expression<Func<T, bool>> filter , string? includeProperties = null);
+         void add (T entity);
+        void Delete (T entity);
+        void DeleteRange (IEnumerable<T> entity );
+    }
+}

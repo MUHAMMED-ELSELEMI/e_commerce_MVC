@@ -1,0 +1,117 @@
+﻿@model ecommerce.Models.Category
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4">Edit Category</h2>
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                        <input type="hidden" asp-for="Id" />
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter category name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DisplayOrder" class="control-label"></label>
+                            <input asp-for="DisplayOrder" class="form-control" placeholder="Enter display order" />
+                            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center mt-4">
+                            <button type="submit" class="btn btn-primary btn-fancy">
+                                <i class="fas fa-save mr-2"></i>Save Changes
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary btn-fancy ml-2">
+                                <i class="fas fa-arrow-left mr-2"></i>Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+
+    .card-title {
+        color: #333;
+        font-weight: bold;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        padding: 10px 15px;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+        .form-control:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+    .btn-fancy {
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        padding: 10px 20px;
+        border-radius: 8px;
+    }
+
+        .btn-fancy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+    .btn-primary.btn-fancy {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary.btn-fancy:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+    .btn-secondary.btn-fancy {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+        .btn-secondary.btn-fancy:hover {
+            background-color: #545b62;
+            border-color: #545b62;
+        }
+
+    .shadow {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+</style>
