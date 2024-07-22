@@ -36,52 +36,69 @@
                                 <i class="fas fa-user-shield me-1"></i>Privacy
                             </a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-cogs me-1"></i>Content Management
+                        <li>
+                            <a class="nav-link" asp-area="Admin" asp-controller="Companies" asp-action="Index">
+                                <i class="fas fa-box me-1"></i>Companies
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Categories" asp-action="Index">
-                                        <i class="fas fa-list me-1"></i>Categories
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" asp-area="Admin" asp-controller="Products" asp-action="Index">
-                                        <i class="fas fa-box me-1"></i>Products
-                                    </a>
-                                </li>
-                            </ul>
                         </li>
-                    </ul>
+
+                         @if (User.IsInRole(SD.Role_Admin))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-cogs me-1"></i>Content Management
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Categories" asp-action="Index">
+                                            <i class="fas fa-list me-1"></i>Categories
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Products" asp-action="Index">
+                                            <i class="bi bi-building"></i>Products
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-area="Admin" asp-controller="Companies" asp-action="Index">
+                                            <i class="fas fa-box me-1"></i>Companies
+                                        </a>
+                                    </li>
+                                   
+                                </ul>
+                            </li>
+                            }
+
+
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
-    <div class="container my-5">
-        <main role="main">
-            <partial name="_Notification" />
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="footer mt-2  bg-light ">
-        <div class="container text-center">
-            <span class="text-muted">&copy; 2024 E-Commerce. All rights reserved.</span>
-            <a class="text-muted ms-2" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+        <div class="container my-5">
+            <main role="main">
+                <partial name="_Notification" />
+                                    @RenderBody()
+            </main>
         </div>
-    </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <footer class="footer mt-2  bg-light ">
+            <div class="container text-center">
+                <span class="text-muted">&copy; 2024 E-Commerce. All rights reserved.</span>
+                <a class="text-muted ms-2" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a>
+            </div>
+        </footer>
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-    <script src="https://cdn.tiny.cloud/1/nry430u559xiy1ntm6fdp8iyc0we66a8q7uzjay1uv437285/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>
+        <script src="https://cdn.tiny.cloud/1/nry430u559xiy1ntm6fdp8iyc0we66a8q7uzjay1uv437285/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+                            @await RenderSectionAsync("Scripts", required: false)
+    </body>
+    </html>

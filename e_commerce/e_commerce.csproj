@@ -22,10 +22,18 @@
   <ItemGroup>
     <ProjectReference Include="..\e-commerce.DataAccess\ecommerce.DataAccess.csproj" />
     <ProjectReference Include="..\ecommerce.Models\ecommerce.Models.csproj" />
+    <ProjectReference Include="..\ecommerce.utilty\ecommerce.utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\images\products\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Identity\Pages\Account\Manage\_ViewStart.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

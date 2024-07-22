@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace e_commerce.DataAccess.Repository
 {
-    public class CategoryRepository : Repo<Category>, ICategoryRepository
+    public class CompaniesRepo : Repo<Companies>, ICompaniesRepo 
     {
         private ApplicationDbContext _db;
-        public CategoryRepository(ApplicationDbContext db) : base(db)
+        public CompaniesRepo(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
 
 
-        public void update(Category obj)
+      public  void update(Companies obj)
         {
-            _db.categories.Update(obj);
+            _db.Companies.Update(obj);
 
         }
     }

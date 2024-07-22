@@ -13,12 +13,18 @@ namespace e_commerce.DataAccess.Repository
         private ApplicationDbContext _db;
         public IProductRepo Product { get; private set; }
         public ICategoryRepository Category { get; private set; }
+        public ICompaniesRepo Companies { get; private set; }
+        public IShoppingCartRepo shoppingCart { get; private set; }
+        public IApplicationUserRepo applicationUser { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Category = new CategoryRepository(_db);
             Product = new ProductRepo(_db);
+            Companies = new CompaniesRepo(_db);
+            shoppingCart = new ShoppingCartRepo(_db);
+            applicationUser = new ApplicationUserRepo(_db);
         }
 
 

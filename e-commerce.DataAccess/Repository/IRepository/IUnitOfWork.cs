@@ -10,6 +10,9 @@ namespace e_commerce.DataAccess.Repository.IRepository
     {
         IProductRepo Product { get; }
         ICategoryRepository Category { get; }
+        ICompaniesRepo Companies { get; }
+        IShoppingCartRepo shoppingCart { get; }
+        IApplicationUserRepo applicationUser { get; }
 
         void save();
     }

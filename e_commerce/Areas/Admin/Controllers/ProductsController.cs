@@ -1,6 +1,7 @@
 ﻿using e_commerce.DataAccess.Repository.IRepository;
 using ecommerce.Models;
 using ecommerce.Models.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
@@ -10,6 +11,8 @@ using System.Collections.Generic;
 namespace e_commerce.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+
     public class ProductsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

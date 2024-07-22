@@ -20,7 +20,7 @@ namespace e_commerce.DataAccess.Repository
 
         public void update(Product obj)
         {
-            _context.Update(obj);
+            _context.products.Update(obj);
 
         }
 
