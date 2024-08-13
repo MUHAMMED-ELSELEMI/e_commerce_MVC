@@ -1,0 +1,78 @@
+﻿@model ShoppingCartVM
+<div class="container my-5">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white py-3">
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <h4 class="mb-0"><i class="bi bi-cart3"></i> Shopping Cart</h4>
+                </div>
+                <div class="col-6 text-end">
+                    <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-light btn-sm">
+                        Continue Shopping <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            @if (Model.ListCart.Any())
+            {
+                @foreach (var item in Model.ListCart)
+                {
+                    <div class="row mb-4">
+                        <div class="col-lg-2 col-md-3 mb-3 mb-lg-0">
+                            <img src="@item.Product.ImageUrl" class="img-fluid rounded" alt="@item.Product.Title" />
+                        </div>
+                        <div class="col-lg-5 col-md-9">
+                            <h5 class="mb-2">@item.Product.Title</h5>
+                            <p class="text-muted small">@Html.Raw(item.Product.Description)</p>
+                        </div>
+                        <div class="col-lg-5">
+                            <div class="row align-items-center">
+                                <div class="col-md-4 col-6 mb-2 mb-md-0">
+                                    <h6 class="mb-0">@item.Price.ToString("c") <span class="text-muted">x @item.Count</span></h6>
+                                </div>
+                                <div class="col-md-5 col-6 mb-2 mb-md-0">
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="minus" asp-route-cartId="@item.Id" class="btn btn-primary">
+                                            <i class="bi bi-dash"></i>
+                                        </a>
+                                        <span class="btn btn-outline-secondary disabled">@item.Count</span>
+                                        <a asp-action="plus" asp-route-cartId="@item.Id" class="btn btn-primary">
+                                            <i class="bi bi-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-12 text-md-end">
+                                    <a asp-action="remove" asp-route-cartId="@item.Id" class="btn btn-danger">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4" />
+                }
+                <div class="row justify-content-end">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="mb-3">Order Summary</h5>
+                                <div class="d-flex justify-content-between mb-3">
+                                    <span>Total (USD)</span>
+                                    <strong>@Model.OrderHeader.OrderTotal.ToString("c")</strong>
+                                </div>
+                                <a asp-action="Summary" class="btn btn-primary btn-lg w-100">Proceed to Checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning" role="alert">
+                    Your cart is empty. Please add items to your cart before proceeding to checkout.
+                </div>
+            }
+        </div>
+    </div>
+</div>

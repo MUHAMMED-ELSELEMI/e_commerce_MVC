@@ -1,152 +1,81 @@
-﻿@model ecommerce.Models.Product
-@{
-    ViewData["Title"] = "Product Details";
-}
+﻿@model ShoppingCart
 
-<div class="container product-details">
-    <div class="row mb-4">
-        <div class="col-12 position-relative">
-            <h1 class="text-center py-2 bg-primary text-white">@Model.Title</h1>
-        </div>
+<form method="post">
+    <input hidden asp-for="ProductId" />
+    <div class="container product-details">
         <div class="row mb-4">
-            <div>
-                <a asp-action="Index" class="btn btn-secondary btn-fancy position-absolute">Back to Home</a>
+            <div class="col-12 position-relative">
+                <h1 class="text-center py-2 bg-primary text-white">@Model.Product.Title</h1>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 text-center">
-            <img src="@Model.ImageUrl" class="img-fluid rounded shadow product-image" alt="@Model.Title" />
-        </div>
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-12 mb-4">
-                    <h2>Product Information</h2>
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th>Author</th>
-                                <td>@Html.DisplayFor(model => model.Author)</td>
-                            </tr>
-                            <tr>
-                                <th>ISBN</th>
-                                <td>@Html.DisplayFor(model => model.ISBN)</td>
-                            </tr>
-                            <tr>
-                                <th>Description</th>
-                                <td>@Html.Raw(Model.Description)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-12">
-                    <h2>Pricing</h2>
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <th >List Price</th>
-                                <td class ="text-decoration-line-through">@Html.DisplayFor(model => model.ListPrice)</td>
-                            </tr>
-                            <tr>
-                                <th>50+ units</th>
-                                <td>@Html.DisplayFor(model => model.Price50)</td>
-                            </tr>
-                            <tr>
-                                <th>100+ units</th>
-                                <td>@Html.DisplayFor(model => model.Price100)</td>
-                            </tr>
-                            <tr class="table-primary">
-                                <th>Current Price</th>
-                                <td><strong>@Html.DisplayFor(model => model.Price)</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="row mb-4">
+                <div>
+                    <a asp-action="Index" class="btn btn-secondary btn-fancy position-absolute">Back to Home</a>
                 </div>
             </div>
-            <div class="row mt-4">
-                <div class="col-12 d-flex btn-fancy align-items-center">
-                    <div class="input-group" style="width: 200px; margin-right: 30px;">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-secondary text-white">count</span>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="@Model.Product.ImageUrl" class="img-fluid rounded shadow product-image" alt="@Model.Product.Title" />
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-12 mb-4">
+                        <h2>Product Information</h2>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th>Author</th>
+                                    <td>@Html.DisplayFor(model => model.Product.Author)</td>
+                                </tr>
+                                <tr>
+                                    <th>ISBN</th>
+                                    <td>@Html.DisplayFor(model => model.Product.ISBN)</td>
+                                </tr>
+                                <tr>
+                                    <th>Description</th>
+                                    <td>@Html.Raw(Model.Product.Description)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-12">
+                        <h2>Pricing</h2>
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th>List Price</th>
+                                    <td class="text-decoration-line-through">@Html.DisplayFor(model => model.Product.ListPrice)</td>
+                                </tr>
+                                <tr>
+                                    <th>50+ units</th>
+                                    <td>@Html.DisplayFor(model => model.Product.Price50)</td>
+                                </tr>
+                                <tr>
+                                    <th>100+ units</th>
+                                    <td>@Html.DisplayFor(model => model.Product.Price100)</td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <th>Current Price</th>
+                                    <td><strong>@Html.DisplayFor(model => model.Product.Price)</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 d-flex btn-fancy align-items-center">
+                        <div class="input-group" style="width: 200px; margin-right: 30px;">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-secondary text-white">count</span>
+                            </div>
+                            <input asp-for="Count" type="number" class="form-control" value="1" min="1">
                         </div>
-                        <input type="number" class="form-control" value="1" min="1">
-                    </div>
-                    <div>
-                        <a href="#" class="btn btn-primary btn-fancy">Add to Cart</a>
+                        <div>
+                            <button type="submit" class="btn btn-primary ">Add to Cart</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<style>
-    body {
-        background-color: #f8f9fa;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .container {
-        max-width: 1200px;
-    }
-
-    h1 {
-        color: #ffffff;
-        font-weight: bold;
-    }
-
-    .btn-fancy {
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        transition: all 0.3s ease;
-        padding: 8px 16px;
-        margin: 2px;
-    }
-
-        .btn-fancy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-    .btn-primary.btn-fancy {
-        background-color: #007bff;
-        border-color: #007bff;
-    }
-
-    .btn-secondary.btn-fancy {
-        background-color: #6c757d;
-        border-color: #6c757d;
-    }
-
-    .table {
-        background-color: #ffffff;
-    }
-
-    .table-hover tbody tr:hover {
-        background-color: rgba(0, 123, 255, 0.1);
-    }
-
-    .table-bordered {
-        border: 1px solid #dee2e6;
-    }
-
-    .shadow-sm {
-        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
-    }
-
-    .product-image {
-        max-height: 300px;
-        max-width: 100%;
-        object-fit: contain;
-    }
-
-    .input-group-text {
-        background-color: #f8f9fa;
-        border-color: #ced4da;
-    }
-
-    input[type="number"] {
-        text-align: center;
-    }
-</style>
+</form>

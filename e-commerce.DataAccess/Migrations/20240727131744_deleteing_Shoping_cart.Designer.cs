@@ -12,8 +12,8 @@ using ecommerce.DataAccess.Data;
 namespace e_commerce.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240721085649_dbcontexttodb")]
-    partial class dbcontexttodb
+    [Migration("20240727131744_deleteing_Shoping_cart")]
+    partial class deleteing_Shoping_cart
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -384,6 +384,9 @@ namespace e_commerce.DataAccess.Migrations
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("CompanyID")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -396,6 +399,8 @@ namespace e_commerce.DataAccess.Migrations
 
                     b.Property<string>("StreetAddress")
                         .HasColumnType("nvarchar(max)");
+
+                    b.HasIndex("CompanyID");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -460,6 +465,15 @@ namespace e_commerce.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("ecommerce.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("ecommerce.Models.Companies", "Company")
+                        .WithMany()
+                        .HasForeignKey("CompanyID");
+
+                    b.Navigation("Company");
                 });
 #pragma warning restore 612, 618
         }

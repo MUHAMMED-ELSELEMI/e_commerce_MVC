@@ -1,7 +1,4 @@
-﻿
-
-
-var datatable;
+﻿var datatable;
 
 
 $(document).ready(function () {
@@ -15,11 +12,11 @@ function loadDataTabel() {
     dataTable = $('#tblData').DataTable({
         "ajax": { url: '/Admin/Products/GetAll' },
         "columns": [
-            { data: 'author', "width": "10%" },
+            { data: 'author', "width": "15%" },
             { data: 'isbn', "width": "25%" },
-            { data: 'title', "width": "10%" },
-            { data: 'price', "width": "10%" },
-            { data: 'category.name', "width": "10%" },
+            { data: 'title', "width": "15%" },
+            { data: 'price', "width": "15%" },
+            { data: 'category.name', "width": "15%" },
             {
 
                 data: 'id',
@@ -27,18 +24,16 @@ function loadDataTabel() {
 
                     return `<td class="text-center">
                                     <a href="/admin/products/Upsert?id= ${data} " class="btn btn-warning btn-sm btn-fancy">
-                                        <i class="fas fa-edit"></i> edit
+                                        <i class="fas fa-edit"></i> 
                                     </a>
                                     <a href="/admin/products/Details?id=${data} " class="btn btn-info btn-sm btn-fancy">
-                                        <i class="fas fa-info-circle"></i> details
+                                        <i class="fas fa-info-circle"></i> 
                                     </a>
                                     <a onClick= Delete('/admin/products/delete/${data}') class="btn btn-danger btn-sm btn-fancy">
-                                        <i class="fas fa-trash-alt"></i> delete
+                                        <i class="fas fa-trash-alt"></i> 
                                     </a>
                                 </td>`
-
-                                    
-                }, "width": "35%"
+                }, "width": "15%"
 
 
 
@@ -49,7 +44,7 @@ function loadDataTabel() {
 }
 
 
-function Delete (url) {
+function Delete(url) {
 
     Swal.fire({
         title: "Are you sure?",
@@ -62,7 +57,7 @@ function Delete (url) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: url ,  
+                url: url,
                 type: 'DELETE',
                 success: function (data) {
                     dataTable.ajax.reload();

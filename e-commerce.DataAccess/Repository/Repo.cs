@@ -35,9 +35,13 @@ namespace e_commerce.DataAccess.Repository
             dbset.RemoveRange(entity);
         }
 
-        public IEnumerable<T> GetAll(string? includeProperties = null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter, string? includeProperties = null)
         {
             IQueryable<T> query = dbset;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
             if (!string.IsNullOrEmpty(includeProperties))
             {
 
@@ -55,6 +59,8 @@ namespace e_commerce.DataAccess.Repository
         public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null)
         {
             IQueryable<T> query = dbset;
+
+            query = query.Where(filter);
             if (!string.IsNullOrEmpty(includeProperties))
             {
 
@@ -65,9 +71,12 @@ namespace e_commerce.DataAccess.Repository
 
                 }
             }
-            query = query.Where(filter);
             return query.FirstOrDefault();
         }
+
+
+
+
     }
 
 }

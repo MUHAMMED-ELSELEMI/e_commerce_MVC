@@ -5,7 +5,7 @@
 namespace e_commerce.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class CompanyTableToDb : Migration
+    public partial class SessionIdToDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

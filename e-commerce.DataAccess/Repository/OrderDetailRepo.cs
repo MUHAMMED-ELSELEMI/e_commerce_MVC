@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace e_commerce.DataAccess.Repository
 {
-    public class CompaniesRepo : Repo<Companies>, ICompaniesRepo 
+    public class OrderDetailRepo : Repo<OrderDetail>, IOrderDetailRepo
     {
         private ApplicationDbContext _db;
-        public CompaniesRepo(ApplicationDbContext db) : base(db)
+        public OrderDetailRepo(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
 
 
-      public  void update(Companies obj)
+        public void update(OrderDetail obj)
         {
             _db.Update(obj);
 

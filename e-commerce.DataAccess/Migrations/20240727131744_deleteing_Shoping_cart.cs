@@ -5,10 +5,17 @@
 namespace e_commerce.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class shoppingcarttodb : Migration
+    public partial class deleteing_Shoping_cart : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "shoppingCarts");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "shoppingCarts",
@@ -16,9 +23,9 @@ namespace e_commerce.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false),
-                    count = table.Column<int>(type: "int", nullable: false),
-                    ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    count = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,13 +53,6 @@ namespace e_commerce.DataAccess.Migrations
                 name: "IX_shoppingCarts_ProductId",
                 table: "shoppingCarts",
                 column: "ProductId");
-        }
-
-        /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "shoppingCarts");
         }
     }
 }

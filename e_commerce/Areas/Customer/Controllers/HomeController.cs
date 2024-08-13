@@ -1,7 +1,9 @@
 using e_commerce.DataAccess.Repository.IRepository;
 using ecommerce.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace e_commerce.Areas.Customer.Controllers
 {
@@ -31,14 +33,54 @@ namespace e_commerce.Areas.Customer.Controllers
                 return NotFound();
             }
 
-            var product = _unitOfWork.Product
-                .GetFirstOrDefault(m => m.Id == id);
+            var product = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id, includeProperties: "Category");
             if (product == null)
             {
                 return NotFound();
             }
 
-            return View(product);
+            ShoppingCart shoppingCart = new ShoppingCart()
+            {
+                Product = product,
+                Count = 1,
+                ProductId = id.Value
+            };
+
+            return View(shoppingCart);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public IActionResult Details(ShoppingCart shoppingCart)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            shoppingCart.ApplicationUserId = userId;
+
+            // Ensure the Id is not set
+            shoppingCart.Id = 0;
+
+            ShoppingCart cartFromDb = _unitOfWork.shoppingCart.GetFirstOrDefault(
+                u => u.ApplicationUserId == userId && u.ProductId == shoppingCart.ProductId);
+
+            if (cartFromDb != null)
+            {
+                // If the product already exists in the cart, update the quantity
+                cartFromDb.Count += shoppingCart.Count;
+                _unitOfWork.shoppingCart.update(cartFromDb);
+            }
+            else
+            {
+                // If the product does not exist in the cart, add a new entry
+                _unitOfWork.shoppingCart.add(shoppingCart);
+            }
+
+            _unitOfWork.save();
+            TempData["success"] = "Item added to cart successfully";
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()

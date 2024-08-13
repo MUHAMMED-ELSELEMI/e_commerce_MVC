@@ -16,9 +16,10 @@ namespace ecommerce.DataAccess.Data
         public DbSet<Category> categories { get; set; }
         public DbSet<Product> products { get; set; }
         public DbSet<ApplicationUser> applicationUsers { get; set; }
-        public DbSet<ShoppingCart> shoppingCarts { get; set; }
         public DbSet<Companies>  Companies { get; set; }
-
+        public DbSet<ShoppingCart>  shoppingCarts { get; set; }
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

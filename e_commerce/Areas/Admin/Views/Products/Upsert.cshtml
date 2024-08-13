@@ -4,7 +4,7 @@
 }
 
 <div class="container mt-5">
-    <h1 class="mb-4"> @(Model.product.Id!=0? "Update" : "Create") Product</h1>
+    <h1 class="mb-4"> @(Model.product.Id != 0 ? "Update" : "Create") Product</h1>
     <div class="card shadow border-0">
         <div class="card-body">
             <form asp-action="Upsert" enctype="multipart/form-data">
@@ -16,103 +16,96 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <div class="form-floating">
-                                    <input asp-for="product.Id" class="form-control" placeholder="Id" />
-                                    <label asp-for="product.Id"></label>
-                                    <span asp-validation-for="product.Id" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <div class="form-floating">
                                     <input asp-for="product.Title" class="form-control" placeholder="Title" />
                                     <label asp-for="product.Title"></label>
                                     <span asp-validation-for="product.Title" class="text-danger"></span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <div class="form-floating">
-                                    <input asp-for="product.Author" class="form-control" placeholder="Author" />
-                                    <label asp-for="product.Author"></label>
-                                    <span asp-validation-for="product.Author" class="text-danger"></span>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-floating">
+                                        <input asp-for="product.Author" class="form-control" placeholder="Author" />
+                                        <label asp-for="product.Author"></label>
+                                        <span asp-validation-for="product.Author" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-floating">
+                                        <input asp-for="product.ISBN" class="form-control" placeholder="ISBN" />
+                                        <label asp-for="product.ISBN"></label>
+                                        <span asp-validation-for="product.ISBN" class="text-danger"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="mb-3">
                                 <div class="form-floating">
-                                    <input asp-for="product.ISBN" class="form-control" placeholder="ISBN" />
-                                    <label asp-for="product.ISBN"></label>
-                                    <span asp-validation-for="product.ISBN" class="text-danger"></span>
+                                    <textarea asp-for="product.Description" class="form-control" placeholder="Description" style="height: 100px"></textarea>
+                                    <label asp-for="product.Description"></label>
+                                    <span asp-validation-for="product.Description" class="text-danger"></span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="form-floating">
-                                <textarea asp-for="product.Description" class="form-control" placeholder="Description" style="height: 100px"></textarea>
-                                <label asp-for="product.Description"></label>
-                                <span asp-validation-for="product.Description" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3 mb-3">
-                                <div class="form-floating">
-                                    <input asp-for="product.ListPrice" class="form-control" placeholder="List Price" />
-                                    <label asp-for="product.ListPrice"></label>
-                                    <span asp-validation-for="product.ListPrice" class="text-danger"></span>
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-floating">
+                                        <input asp-for="product.ListPrice" class="form-control" placeholder="List Price" />
+                                        <label asp-for="product.ListPrice"></label>
+                                        <span asp-validation-for="product.ListPrice" class="text-danger"></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="form-floating">
-                                    <input asp-for="product.Price" class="form-control" placeholder="Price" />
-                                    <label asp-for="product.Price"></label>
-                                    <span asp-validation-for="product.Price" class="text-danger"></span>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-floating">
+                                        <input asp-for="product.Price" class="form-control" placeholder="Price" />
+                                        <label asp-for="product.Price"></label>
+                                        <span asp-validation-for="product.Price" class="text-danger"></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="form-floating">
-                                    <input asp-for="product.Price50" class="form-control" placeholder="Price for 50+" />
-                                    <label asp-for="product.Price50">Price for 50+</label>
-                                    <span asp-validation-for="product.Price50" class="text-danger"></span>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-floating">
+                                        <input asp-for="product.Price50" class="form-control" placeholder="Price for 50+" />
+                                        <label asp-for="product.Price50">Price for 50+</label>
+                                        <span asp-validation-for="product.Price50" class="text-danger"></span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="form-floating">
-                                    <input asp-for="product.Price100" class="form-control" placeholder="Price for 100+" />
-                                    <label asp-for="product.Price100">Price for 100+</label>
-                                    <span asp-validation-for="product.Price100" class="text-danger"></span>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-floating">
+                                        <input asp-for="product.Price100" class="form-control" placeholder="Price for 100+" />
+                                        <label asp-for="product.Price100">Price for 100+</label>
+                                        <span asp-validation-for="product.Price100" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-floating">
+                                        <select asp-for="product.CategoryId" class="form-select" asp-items="@Model.CategoryList">
+                                            <option disabled selected></option>
+                                        </select>
+                                        <label asp-for="product.CategoryId"></label>
+                                        <span asp-validation-for="product.CategoryId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="form-floating">
+                                        <input type="file" name="file" class="form-control" />
+                                        <label asp-for="product.ImageUrl">Image upload</label>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <a asp-action="Index" class="btn btn-secondary btn-fancy">Back to List</a>
+                                    <input type="submit" value=" @(Model.product.Id!=0? "Update" : "Create")" class="btn btn-primary " />
                                 </div>
 
                             </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="form-floating">
-                                    <select asp-for="product.CategoryId" class="form-select" asp-items="@Model.CategoryList">
-                                        <option disabled selected></option>
-                                    </select>
-                                    <label asp-for="product.CategoryId"></label>
-                                    <span asp-validation-for="product.CategoryId" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="form-floating">
-                                    <input type="file" name="file" class="form-control" />
-                                    <label asp-for="product.ImageUrl">Image upload</label>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between mt-4">
-                                <a asp-action="Index" class="btn btn-secondary btn-fancy">Back to List</a>
-                                <input type="submit" value=" @(Model.product.Id!=0? "Update" : "Create")" class="btn btn-primary btn-fancy" />
-                            </div>
-
                         </div>
-                </div>
+                    </div>
                     <div class="col-2">
 
-                        <img src="@Model.product.ImageUrl"  width="100%"
-                        style="border-radius: 5px ; border: 1px solid #bbb9b9"/>
+                        <img src="@Model.product.ImageUrl" width="100%"
+                             style="border-radius: 5px ; border: 1px solid #bbb9b9" />
 
-                        
+
                     </div>
-              
-            
+
+
             </form>
         </div>
     </div>
@@ -123,53 +116,10 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
         <script>
             tinymce.init({
-              selector: 'textarea',
-              plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
-              toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-              tinycomments_mode: 'embedded',
-              tinycomments_author: 'Author name',
-              mergetags_list: [
-                { value: 'First.Name', title: 'First Name' },
-                { value: 'Email', title: 'Email' },
-              ],
-              ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+                selector: 'textarea',
+                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
             });
         </script>
     }
 }
-
-<style>
-    .btn-fancy {
-        padding: 10px 20px;
-        font-size: 16px;
-        transition: all 0.3s ease;
-        border-radius: 30px;
-    }
-
-        .btn-fancy.btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .btn-fancy.btn-secondary {
-            background-color: #6c757d;
-            border-color: #6c757d;
-        }
-
-        .btn-fancy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-    .card {
-        border-radius: 15px;
-    }
-
-    .form-floating > .form-control {
-        padding: 1rem 0.75rem;
-    }
-
-    .form-floating > label {
-        padding: 1rem 0.75rem;
-    }
-</style>

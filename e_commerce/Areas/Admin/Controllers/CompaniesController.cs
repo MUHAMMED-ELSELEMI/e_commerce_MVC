@@ -1,6 +1,7 @@
 ﻿using e_commerce.DataAccess.Repository.IRepository;
 using ecommerce.Models;
 using ecommerce.Models.ViewModel;
+using ecommerce.utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,7 +12,7 @@ using System.Collections.Generic;
 namespace e_commerce.Areas.Admin.Controllers
 {
     [Area("Admin")]
-
+    [Authorize]
     public class CompaniesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -26,7 +27,7 @@ namespace e_commerce.Areas.Admin.Controllers
             return View(_unitOfWork.Companies.GetAll().ToList());
         }
 
-        // GET: Categories/Details/5
+        // GET: Company/Details/5
         public IActionResult Details(int? id)
         {
             if (id == null)

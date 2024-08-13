@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace e_commerce.DataAccess.Repository
 {
-    public class CategoryRepository : Repo<Category>, ICategoryRepository
+    public class CategoryRepo : Repo<Category>, ICategoryRepo
     {
         private ApplicationDbContext _db;
-        public CategoryRepository(ApplicationDbContext db) : base(db)
+        public CategoryRepo(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }
@@ -20,7 +20,7 @@ namespace e_commerce.DataAccess.Repository
 
         public void update(Category obj)
         {
-            _db.categories.Update(obj);
+            _db.Update(obj);
 
         }
     }

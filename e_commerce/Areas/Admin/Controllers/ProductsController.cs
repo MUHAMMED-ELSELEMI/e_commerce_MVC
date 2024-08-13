@@ -1,6 +1,7 @@
 ﻿using e_commerce.DataAccess.Repository.IRepository;
 using ecommerce.Models;
 using ecommerce.Models.ViewModel;
+using ecommerce.utility;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,9 +11,8 @@ using System.Collections.Generic;
 
 namespace e_commerce.Areas.Admin.Controllers
 {
+    [Authorize]
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
-
     public class ProductsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -137,7 +137,7 @@ namespace e_commerce.Areas.Admin.Controllers
         #region API CALLS 
 
         [HttpGet]
-        public IActionResult GetAll(int id)
+        public IActionResult GetAll()
         {
 
             List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();

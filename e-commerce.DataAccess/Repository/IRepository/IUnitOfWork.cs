@@ -9,10 +9,12 @@ namespace e_commerce.DataAccess.Repository.IRepository
     public interface IUnitOfWork
     {
         IProductRepo Product { get; }
-        ICategoryRepository Category { get; }
+        ICategoryRepo Category { get; }
         ICompaniesRepo Companies { get; }
-        IShoppingCartRepo shoppingCart { get; }
         IApplicationUserRepo applicationUser { get; }
+        IShoppingCartRepo shoppingCart { get; }
+        IOrderHeaderRepo OrderHeader { get; }
+        IOrderDetailRepo OrderDetail { get; }
 
         void save();
     }

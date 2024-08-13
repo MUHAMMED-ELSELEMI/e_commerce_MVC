@@ -9,11 +9,12 @@ using ecommerce.Models;
 using ecommerce.DataAccess.Data;
 using e_commerce.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Authorization;
+using ecommerce.utility;
 namespace e_commerce.Areas.Admin.Controllers
 
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
